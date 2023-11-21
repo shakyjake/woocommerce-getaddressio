@@ -5,7 +5,7 @@ Wordpress Plugin to integrate the getaddress.io API with WooCommerce
 Address finder, innit
 
 ## API Key?
-https://getaddress.io/
+https://getaddress.io/, stick it in the settings page
 
 ## Why no plugin repository?
 CBA. Don't like SVN. Sick of "the sky is falling" emails from wordpress every time there's a minor update, begging me to check compatibility.
