@@ -42,8 +42,8 @@ function getaddressio_select(event){
 			if(address_line1){
 				address_line1.value = data.line_1;
 			}
-
 			const address_line2 = root.querySelector('#' + address_type + '_address_2');
+
 			const line_2 = [];
 			if(data.line_2.length){
 				line_2.push(data.line_2);
@@ -54,8 +54,12 @@ function getaddressio_select(event){
 			if(data.line_4.length){
 				line_2.push(data.line_4);
 			}
+
+			/* clients love to disable the second line field then ask why part of the address is missing */
 			if(address_line2){
 				address_line2.value = line_2.join(', ');
+			} else {
+				address_line1.value += ', ' + line_2.join(', ');
 			}
 
 			const address_city = root.querySelector('#' + address_type + '_city');
