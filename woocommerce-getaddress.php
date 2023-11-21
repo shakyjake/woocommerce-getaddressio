@@ -135,27 +135,29 @@ function wcgaio_token_get(){
 function wcgaio_enqueue_assets(){
 	if(function_exists('is_checkout')){
 		if(is_checkout()){
-			wp_register_style('wcgaio', trailingslashit(plugin_dir_url(__FILE__)) . 'css/address.css', null, WCGAIO_VERSION, 'all');
-			wp_register_script('wcgaio-load', trailingslashit(plugin_dir_url(__FILE__)) . 'js/address.js', ['jquery'], WCGAIO_VERSION, true);
-			wp_localize_script('wcgaio-load', 'wcgaio', array(
-				'ajax_url' => admin_url('admin-ajax.php'),
-				'search_token' => wp_create_nonce('wcgaio_address_search'),
-				'detail_token' => wp_create_nonce('wcgaio_address_details'),
-				'show_manual_btn' => get_option('wcgaio_manual') ? 'true' : 'false'
-			));
-			wp_enqueue_style('wcgaio');
-			wp_enqueue_script('wcgaio-load');
-			
-			$colour = get_option('wcgaio_button_color');
-			$border_radius = get_option('wcgaio_border_radius');
-
-			$custom_style = sprintf(
-				'.address__search{%1$s%2$s}',
-				($colour ? sprintf('--wcgaio-accent: %1$s;', $colour) : ''),
-				($border_radius ? sprintf('--wcgaio-radius: %1$s;', $border_radius) : '')
-			);
-
-			wp_add_inline_style('wcgaio', $custom_style);
+			if(wcgaio_token_get()){
+				wp_register_style('wcgaio', trailingslashit(plugin_dir_url(__FILE__)) . 'css/address.css', null, WCGAIO_VERSION, 'all');
+				wp_register_script('wcgaio-load', trailingslashit(plugin_dir_url(__FILE__)) . 'js/address.js', ['jquery'], WCGAIO_VERSION, true);
+				wp_localize_script('wcgaio-load', 'wcgaio', array(
+					'ajax_url' => admin_url('admin-ajax.php'),
+					'search_token' => wp_create_nonce('wcgaio_address_search'),
+					'detail_token' => wp_create_nonce('wcgaio_address_details'),
+					'show_manual_btn' => get_option('wcgaio_manual') ? 'true' : 'false'
+				));
+				wp_enqueue_style('wcgaio');
+				wp_enqueue_script('wcgaio-load');
+				
+				$colour = get_option('wcgaio_button_color');
+				$border_radius = get_option('wcgaio_border_radius');
+	
+				$custom_style = sprintf(
+					'.address__search{%1$s%2$s}',
+					($colour ? sprintf('--wcgaio-accent: %1$s;', $colour) : ''),
+					($border_radius ? sprintf('--wcgaio-radius: %1$s;', $border_radius) : '')
+				);
+	
+				wp_add_inline_style('wcgaio', $custom_style);
+			}
 		}
 	}
 }
