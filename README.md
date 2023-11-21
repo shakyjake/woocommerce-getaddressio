@@ -12,3 +12,6 @@ CBA. Don't like SVN. Sick of "the sky is falling" emails from wordpress every ti
 
 ## How do I use it?
 If you have to ask, [start here](https://wordpress.com/learn/)
+
+## I have other questions
+Please leave me alone, I am so very tired
