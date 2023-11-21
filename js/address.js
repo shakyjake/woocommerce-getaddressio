@@ -62,7 +62,10 @@ function getaddressio_select(event){
 				} else {
 					address_line1.value += ', ' + line_2.join(', ');
 				}
+			} else if(address_line2){
+				address_line2.value = '';
 			}
+
 
 			const address_city = root.querySelector('#' + address_type + '_city');
 			if(address_city){
