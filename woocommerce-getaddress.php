@@ -6,7 +6,7 @@
  * @wordpress-plugin
  * Plugin Name:   WooCommerce GetAddress
  * Description:   Woocommerce Checkout integration for getaddress.io
- * Version:       1.1.13
+ * Version:       1.1.14
  * Text Domain:   wcgaio
  * License:       MIT
  * License URI:   https://opensource.org/license/mit/
@@ -84,7 +84,7 @@ function wcgaio_address_search(){
 	}
 	
 	$url = sprintf(
-		'https://api.getaddress.io/autocomplete/%1$s?api-key=%2$s',
+		'https://api.getaddress.io/autocomplete/%1$s?api-key=%2$s&all=true',
 		str_replace('+', '%20', urlencode($search)),
 		urlencode(wcgaio_token_get())
 	);
